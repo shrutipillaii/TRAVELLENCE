@@ -73,10 +73,13 @@
                         TRAVELLENCE
                     </div>
                 </div>
+               <!-- Navigation Links -->
                 <div class="hidden md:flex space-x-8 text-base font-medium">
                     <a href="#about" onclick="scrollToSection('about', event)" class="hover:text-trav-gold transition duration-200">About Us</a>
                     <a href="#services" onclick="scrollToSection('services', event)" class="hover:text-trav-gold transition duration-200">Services</a>
                     <a href="#packages" onclick="scrollToSection('packages', event)" class="hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="financial_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Financial Analysis</a>
+                    <a href="competitive_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Competitive Analysis</a>
                     <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
                 </div>
                 <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
@@ -148,37 +151,40 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="mb-20">
-            <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Our Excellence Guarantee</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <div class="service-card bg-white">
-                    <div class="text-5xl mb-4">✈️</div>
-                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Custom Trip Planning</h4>
-                    <p class="text-sm text-gray-500">Personalized itineraries based on your preferences and budget.</p>
-                </div>
-                <div class="service-card bg-white">
-                    <div class="text-5xl mb-4">🏨</div>
-                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Travel Concierge</h4>
-                    <p class="text-sm text-gray-500">Flight, hotel, visa, and activity bookings handled end-to-end.</p>
-                </div>
-                <div class="service-card bg-white">
-                    <div class="text-5xl mb-4">📞</div>
-                    <h4 class="font-extrabold text-trav-dark-blue mb-2">24/7 Trip Assistance</h4>
-                    <p class="text-sm text-gray-500">Real-time support during your travels, anytime, anywhere.</p>
-                </div>
-                <div class="service-card bg-white">
-                    <div class="text-5xl mb-4">🎉</div>
-                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Experience Packages</h4>
-                    <p class="text-sm text-gray-500">Honeymoon, solo, family, or corporate trips crafted with care.</p>
-                </div>
-                <div class="service-card bg-white">
-                    <div class="text-5xl mb-4">🌍</div>
-                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Sustainable Travel</h4>
-                    <p class="text-sm text-gray-500">Eco-friendly stays and responsible tourism choices.</p>
-                </div>
-            </div>
-        </section>
+      <!-- Add this inside the <head> tag of travellence.html if not already present -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Updated Services Section -->
+<section id="services" class="mb-20">
+    <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Our Excellence Guarantee</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div class="service-card bg-white">
+            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-plane"></i></div>
+            <h4 class="font-extrabold text-trav-dark-blue mb-2">Custom Trip Planning</h4>
+            <p class="text-sm text-gray-500">Personalized itineraries based on your preferences and budget.</p>
+        </div>
+        <div class="service-card bg-white">
+            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-hotel"></i></div>
+            <h4 class="font-extrabold text-trav-dark-blue mb-2">Travel Concierge</h4>
+            <p class="text-sm text-gray-500">Flight, hotel, visa, and activity bookings handled end-to-end.</p>
+        </div>
+        <div class="service-card bg-white">
+            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-phone"></i></div>
+            <h4 class="font-extrabold text-trav-dark-blue mb-2">24/7 Trip Assistance</h4>
+            <p class="text-sm text-gray-500">Real-time support during your travels, anytime, anywhere.</p>
+        </div>
+        <div class="service-card bg-white">
+            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-gift"></i></div>
+            <h4 class="font-extrabold text-trav-dark-blue mb-2">Experience Packages</h4>
+            <p class="text-sm text-gray-500">Honeymoon, solo, family, or corporate trips crafted with care.</p>
+        </div>
+        <div class="service-card bg-white">
+            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-leaf"></i></div>
+            <h4 class="font-extrabold text-trav-dark-blue mb-2">Sustainable Travel</h4>
+            <p class="text-sm text-gray-500">Eco-friendly stays and responsible tourism choices.</p>
+        </div>
+    </div>
+</section>
 
         <!-- Featured Packages Section -->
         <section id="packages" class="mb-20">
@@ -187,7 +193,7 @@
                 <!-- Package 1: Maldives -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/1e3a8a/FFC72C?text=Maldives+Romance" alt="Maldives Honeymoon" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/maldives.jpg" alt="Maldives Honeymoon" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">7 Days Luxury</span>
                     </div>
                     <div class="p-4">
@@ -204,7 +210,7 @@
                 <!-- Package 2: Swiss Alps -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/0c4a6e/FFC72C?text=Swiss+Alps+Trek" alt="Alps Solo Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/swissalps.jpg" alt="Alps Solo Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">10 Days Solo</span>
                     </div>
                     <div class="p-4">
@@ -221,7 +227,7 @@
                 <!-- Package 3: Karnataka -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/10b981/FFC72C?text=Eco+India+Safari" alt="Eco-India Family Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/karnatak.jpg" alt="Eco-India Family Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">12 Days Family</span>
                     </div>
                     <div class="p-4">
@@ -238,7 +244,7 @@
                 <!-- Package 4: Tokyo -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/7c3aed/FFC72C?text=Tokyo+Gourmet" alt="Tokyo Culinary Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/tokyo.jpeg" alt="Tokyo Culinary Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">14 Days Culture</span>
                     </div>
                     <div class="p-4">
@@ -255,7 +261,7 @@
                 <!-- Package 5: Rajasthan -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/991b1b/FFC72C?text=Rajasthan+Palaces" alt="Rajasthan Heritage Circuit" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/rajsthan.jpg" alt="Rajasthan Heritage Circuit" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">8 Days Domestic</span>
                     </div>
                     <div class="p-4">
@@ -272,7 +278,7 @@
                 <!-- Package 6: Bali -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/1d4ed8/FFC72C?text=Bali+Retreat" alt="Bali Tropical Bliss" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/bali.jpg" alt="Bali Tropical Bliss" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">7 Days Luxury</span>
                     </div>
                     <div class="p-4">
@@ -289,7 +295,7 @@
                 <!-- Package 7: New Zealand -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/15803d/FFC72C?text=New+Zealand+Adventure" alt="New Zealand Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/newz.jpg" alt="New Zealand Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">12 Days Adventure</span>
                     </div>
                     <div class="p-4">
@@ -306,7 +312,7 @@
                 <!-- Package 8: Italy -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/9f1239/FFC72C?text=Italy+Heritage" alt="Italy Art & History" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/italy.jpg" alt="Italy Art & History" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">10 Days Cultural</span>
                     </div>
                     <div class="p-4">
@@ -323,7 +329,7 @@
                 <!-- Package 9: Kerala -->
                 <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
                     <div class="relative">
-                        <img src="https://placehold.co/600x400/047857/FFC72C?text=Kerala+Backwaters" alt="Kerala Backwaters" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <img src="./assets/kerala.jpg" alt="Kerala Backwaters" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
                         <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">6 Days Domestic</span>
                     </div>
                     <div class="p-4">

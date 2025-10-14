@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Comparison - Travellence</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        
+        .hero-bg {
+            background: linear-gradient(to right, #1f2937, #111827);
+        }
+        .text-trav-gold { color: #f59e0b; }
+        .bg-trav-gold { background-color: #f59e0b; }
+        .chart-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .chart-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .comparison-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trav-dark-blue': '#1f2937',
+                        'trav-gold': '#f59e0b',
+                        'trav-light': '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="hero-bg text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-5">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">
+                        TL
+                    </div>
+                    <div class="text-2xl font-black tracking-wider text-white">
+                        TRAVELLENCE
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 text-base font-medium">
+                    <a href="index.html" class="hover:text-trav-gold transition duration-200">Home</a>
+                    <a href="index.html#about" class="hover:text-trav-gold transition duration-200">About Us</a>
+                    <a href="index.html#services" class="hover:text-trav-gold transition duration-200">Services</a>
+                    <a href="index.html#packages" class="hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="financial_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Financial Analysis</a>
+                    <a href="#analysis" class="text-trav-gold font-semibold">Competitive Analysis</a>
+                    <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
+                </div>
+                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                    &#9776;
+                </button>
+            </nav>
+            <div class="text-center pt-10 pb-16">
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+                    Strategic Competitive  <span class="text-trav-gold">Landscape</span>
+                </h1>
+                <p class="text-xl text-gray-300 font-light">
+                   
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section id="analysis" class="mb-16">
+            <div class="chart-card">
+                <h3 class="text-lg font-bold text-trav-dark-blue mb-4">Market Competitor Overview</h3>
+                <div class="overflow-x-auto">
+                   <table class="w-full comparison-table">
+    <thead>
+        <tr>
+            <th class="px-4 py-3 text-left">Feature / Aspect</th>
+            <th class="px-4 py-3 text-center">MakeMyTrip</th>
+            <th class="px-4 py-3 text-center">SOTC Travel</th>
+            <th class="px-4 py-3 text-center">Travellence ✨</th>
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+        <tr>
+            <td class="px-4 py-3">Core Offering</td>
+            <td class="px-4 py-3 text-center">Flight & hotel bookings, packages</td>
+            <td class="px-4 py-3 text-center">Group tours, travel packages</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Personalized end-to-end trip planning</td>
+        </tr>
+        <tr>
+            <td class="px-4 py-3">Customization Level</td>
+            <td class="px-4 py-3 text-center">Low – fixed packages</td>
+            <td class="px-4 py-3 text-center">Medium – curated tours</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">High – fully tailor-made</td>
+        </tr>
+        <tr>
+            <td class="px-4 py-3">Pricing</td>
+            <td class="px-4 py-3 text-center">Seasonal offers, standard rates</td>
+            <td class="px-4 py-3 text-center">Premium & mid-range</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable & flexible</td>
+        </tr>
+        <tr>
+            <td class="px-4 py-3">Customer Experience</td>
+            <td class="px-4 py-3 text-center">Transaction-based</td>
+            <td class="px-4 py-3 text-center">Guided tours</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Smooth, elegant, stress-free</td>
+        </tr>
+        <tr>
+            <td class="px-4 py-3">Support</td>
+            <td class="px-4 py-3 text-center">Call center, chat</td>
+            <td class="px-4 py-3 text-center">Dedicated travel agent</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">24/7 concierge assistance</td>
+        </tr>
+        <tr>
+            <td class="px-4 py-3">Unique Value</td>
+            <td class="px-4 py-3 text-center">Large reach</td>
+            <td class="px-4 py-3 text-center">Established brand</td>
+            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable personalization & experience focus</td>
+        </tr>
+    </tbody>
+</table>
+        </section>
+    </main>
+
+    <script>
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.chart-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Statements - Travellence</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .hero-bg { background: linear-gradient(to right, #1f2937, #111827); }
+        .text-trav-gold { color: #f59e0b; }
+        .bg-trav-gold { background-color: #f59e0b; }
+        .chart-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .chart-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        th { background-color: #f9fafb; font-weight: 600; color: #374151; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trav-dark-blue': '#1f2937',
+                        'trav-gold': '#f59e0b',
+                        'trav-light': '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="hero-bg text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center py-5">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">
+                        TL
+                    </div>
+                    <div class="text-2xl font-black tracking-wider text-white">
+                        TRAVELLENCE
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 text-base font-medium">
+                    <a href="index.html" class="hover:text-trav-gold transition duration-200">Home</a>
+                    <a href="index.html#about" class="hover:text-trav-gold transition duration-200">About Us</a>
+                    <a href="index.html#services" class="hover:text-trav-gold transition duration-200">Services</a>
+                    <a href="index.html#packages" class="hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="#financials" class="text-trav-gold font-semibold">Financial Statements</a>
+                    <a href="competitive_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Competitive Analysis</a>
+                    <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
+                </div>
+                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                    &#9776;
+                </button>
+            </nav>
+            <div class="text-center pt-10 pb-16">
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+                    Financial <span class="text-trav-gold">Statements</span>
+                </h1>
+                <p class="text-xl text-gray-300 font-light">
+                    Year 1 Projection Overview – Travellence
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="financials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- Balance Sheet -->
+        <section class="chart-card">
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">a) Balance Sheet</h2>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Assets</th>
+                            <th>Amount (₹)</th>
+                            <th>Liabilities & Equity</th>
+                            <th>Amount (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cash & Bank</td>
+                            <td>2,00,000</td>
+                            <td>Owner’s Equity</td>
+                            <td>3,00,000</td>
+                        </tr>
+                        <tr>
+                            <td>Equipment & Software</td>
+                            <td>1,50,000</td>
+                            <td>Long-term Loan</td>
+                            <td>1,50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Website & Tech Infrastructure</td>
+                            <td>1,00,000</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="font-semibold">
+                            <td>Total Assets</td>
+                            <td>4,50,000</td>
+                            <td>Total Liabilities + Equity</td>
+                            <td>4,50,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Profit & Loss -->
+        <section class="chart-card">
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">b) Profit & Loss Statement</h2>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Particulars</th>
+                            <th>Amount (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Revenue</td><td>8,00,000</td></tr>
+                        <tr><td>Cost of Services</td><td>4,00,000</td></tr>
+                        <tr><td>Gross Profit</td><td>4,00,000</td></tr>
+                        <tr><td>Operating Expenses</td><td>2,00,000</td></tr>
+                        <tr><td>Marketing & Branding</td><td>50,000</td></tr>
+                        <tr class="font-semibold"><td>Net Profit Before Tax</td><td>1,50,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Cash Flow -->
+        <section class="chart-card">
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">c) Cash Flow Statement</h2>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Particulars</th>
+                            <th>Amount (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Operating Activities</td><td>Net Profit + Adjustments</td><td>1,70,000</td></tr>
+                        <tr><td>Investing Activities</td><td>Website & Equipment Investment</td><td>(1,50,000)</td></tr>
+                        <tr><td>Financing Activities</td><td>Owner’s Capital + Loan</td><td>3,50,000</td></tr>
+                        <tr class="font-semibold"><td colspan="2">Net Cash Flow (Closing Cash)</td><td>1,70,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="chart-card">
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-4">✨ Summary</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Travellence aims to deliver personalized travel experiences through a lean and tech-driven model. 
+                Year 1 projections indicate financial stability with moderate profitability and low fixed costs.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                With consistent revenue growth and efficient cash utilization, Travellence is positioned for expansion 
+                into premium domestic and international markets in Year 2.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+            <p class="text-sm text-gray-500">Financial Projections © 2025 Travellence Strategy Team</p>
+            <button class="mt-4 bg-trav-gold text-trav-dark-blue font-bold px-6 py-2 rounded-lg hover:bg-yellow-500 transition">
+                Download Report
+            </button>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.chart-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-4px)');
+                card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0)');
+            });
+        });
+    </script>
+</body>
+</html>
