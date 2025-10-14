@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travellence: Excellence in Every Journey</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Import Inter font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+
+        /* Custom styles for the travel theme */
+        .hero-bg {
+            background: linear-gradient(to right, #1f2937, #111827);
+        }
+        .text-trav-gold { color: #f59e0b; }
+        .bg-trav-gold { background-color: #f59e0b; }
+        .hover\:bg-trav-gold-dark:hover { background-color: #d97706; }
+        
+        /* Floating Search Card Effect */
+        .search-card-float {
+            transform: translateY(0);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .search-card-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Styling for the service cards */
+        .service-card {
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .service-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trav-dark-blue': '#1f2937',
+                        'trav-gold': '#f59e0b',
+                        'trav-light': '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header & Hero Section -->
+    <header class="hero-bg text-white shadow-xl pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Navigation -->
+            <nav class="flex justify-between items-center py-5">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">
+                        TL
+                    </div>
+                    <div class="text-2xl font-black tracking-wider text-white">
+                        TRAVELLENCE
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 text-base font-medium">
+                    <a href="#about" onclick="scrollToSection('about', event)" class="hover:text-trav-gold transition duration-200">About Us</a>
+                    <a href="#services" onclick="scrollToSection('services', event)" class="hover:text-trav-gold transition duration-200">Services</a>
+                    <a href="#packages" onclick="scrollToSection('packages', event)" class="hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
+                </div>
+                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                    &#9776;
+                </button>
+            </nav>
+
+            <!-- Tagline and Search Form -->
+            <div class="text-center pt-10 pb-16">
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+                    Your Next <span class="text-trav-gold">Great Adventure</span> Awaits
+                </h1>
+                <p class="text-xl text-gray-300 font-light">
+                    Curated experiences and dedicated concierge services for the discerning global traveler.
+                </p>
+            </div>
+
+            <!-- Booking Search Bar -->
+            <div class="bg-white p-5 sm:p-8 rounded-2xl search-card-float -mb-32 relative">
+                <div class="flex flex-wrap gap-3 mb-6 border-b border-gray-100 pb-3" id="search-tabs">
+                    <button data-type="Package" onclick="changeSearchType('Package')" class="tab-button px-4 py-2 text-trav-dark-blue font-bold border-b-4 border-trav-gold transition duration-150 rounded-t-md">
+                        Packages
+                    </button>
+                    <button data-type="Flight" onclick="changeSearchType('Flight')" class="tab-button px-4 py-2 text-gray-500 hover:text-trav-dark-blue transition duration-150">
+                        Flights
+                    </button>
+                    <button data-type="Hotel" onclick="changeSearchType('Hotel')" class="tab-button px-4 py-2 text-gray-500 hover:text-trav-dark-blue transition duration-150">
+                        Hotels
+                    </button>
+                </div>
+                <div id="search-fields-container" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-40">
+        <!-- About Us -->
+        <section id="about" class="mb-20">
+            <h2 class="text-3xl font-bold text-trav-dark-blue mb-8 text-center">Excellence in Service</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 bg-white p-8 rounded-xl shadow-xl space-y-5 border-l-4 border-trav-gold">
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Founded on the principle that travel should be more than just moving from point A to point B,
+                        Travellence is dedicated to delivering flawless, high-touch experiences for discerning travelers.
+                        We believe in the power of personalized service, ensuring every detail is meticulously managed.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        We specialize in crafting trips that resonate with your personal style, whether it’s a serene
+                        honeymoon, a challenging solo expedition, or a large-scale corporate retreat. Our commitment
+                        to Sustainable Travel means we partner with eco-conscious resorts and promote responsible tourism.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-trav-dark-blue text-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-trav-gold mb-2">Our Mission</h3>
+                        <p class="text-gray-300 text-sm">
+                            To transform travel into an experience of excellence by curating customized itineraries.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-2">Our Vision</h3>
+                        <p class="text-gray-600 text-sm">
+                            To be the most trusted name in premium, personalized travel across India and the globe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="mb-20">
+            <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Our Excellence Guarantee</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4">✈️</div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Custom Trip Planning</h4>
+                    <p class="text-sm text-gray-500">Personalized itineraries based on your preferences and budget.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4">🏨</div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Travel Concierge</h4>
+                    <p class="text-sm text-gray-500">Flight, hotel, visa, and activity bookings handled end-to-end.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4">📞</div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">24/7 Trip Assistance</h4>
+                    <p class="text-sm text-gray-500">Real-time support during your travels, anytime, anywhere.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4">🎉</div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Experience Packages</h4>
+                    <p class="text-sm text-gray-500">Honeymoon, solo, family, or corporate trips crafted with care.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Sustainable Travel</h4>
+                    <p class="text-sm text-gray-500">Eco-friendly stays and responsible tourism choices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Packages Section -->
+        <section id="packages" class="mb-20">
+            <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Featured Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1: Maldives -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/1e3a8a/FFC72C?text=Maldives+Romance" alt="Maldives Honeymoon" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">7 Days Luxury</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Maldives: Water Villa Escape</h3>
+                        <p class="text-gray-600 text-xs mb-3">Overwater perfection & private dining.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹2,10,000</span>
+                            <button onclick="startBooking('Maldives: Water Villa Escape', 210000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 2: Swiss Alps -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/0c4a6e/FFC72C?text=Swiss+Alps+Trek" alt="Alps Solo Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">10 Days Solo</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Swiss Alps: Epic Solo Trek</h3>
+                        <p class="text-gray-600 text-xs mb-3">Guided mountain routes & comfort stays.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹1,35,000</span>
+                            <button onclick="startBooking('Swiss Alps: Epic Solo Trek', 135000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 3: Karnataka -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/10b981/FFC72C?text=Eco+India+Safari" alt="Eco-India Family Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">12 Days Family</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Karnataka: Wildlife & Heritage</h3>
+                        <p class="text-gray-600 text-xs mb-3">Safaris, heritage tours, and resorts.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹1,80,000</span>
+                            <button onclick="startBooking('Karnataka: Wildlife & Heritage', 180000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 4: Tokyo -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/7c3aed/FFC72C?text=Tokyo+Gourmet" alt="Tokyo Culinary Tour" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">14 Days Culture</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Tokyo: Culinary & Culture</h3>
+                        <p class="text-gray-600 text-xs mb-3">Michelin-starred dining and modern city tours.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹2,90,000</span>
+                            <button onclick="startBooking('Tokyo: Culinary & Culture', 290000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 5: Rajasthan -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/991b1b/FFC72C?text=Rajasthan+Palaces" alt="Rajasthan Heritage Circuit" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">8 Days Domestic</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Rajasthan: Heritage & Palaces</h3>
+                        <p class="text-gray-600 text-xs mb-3">Stay in royal palaces and explore historical forts.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹95,000</span>
+                            <button onclick="startBooking('Rajasthan: Heritage & Palaces', 95000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 6: Bali -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/1d4ed8/FFC72C?text=Bali+Retreat" alt="Bali Tropical Bliss" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">7 Days Luxury</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Bali: Tropical Bliss Retreat</h3>
+                        <p class="text-gray-600 text-xs mb-3">Beachfront villas and spa indulgence.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹1,95,000</span>
+                            <button onclick="startBooking('Bali: Tropical Bliss Retreat', 195000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 7: New Zealand -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/15803d/FFC72C?text=New+Zealand+Adventure" alt="New Zealand Adventure" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">12 Days Adventure</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">New Zealand: Adventure Odyssey</h3>
+                        <p class="text-gray-600 text-xs mb-3">Bungee jumping, fjords, and scenic hikes.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹2,50,000</span>
+                            <button onclick="startBooking('New Zealand: Adventure Odyssey', 250000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 8: Italy -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/9f1239/FFC72C?text=Italy+Heritage" alt="Italy Art & History" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">10 Days Cultural</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Italy: Art & History Tour</h3>
+                        <p class="text-gray-600 text-xs mb-3">Explore Rome, Florence, and Venice’s heritage.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹2,30,000</span>
+                            <button onclick="startBooking('Italy: Art & History Tour', 230000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 9: Kerala -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition duration-300 group">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400/047857/FFC72C?text=Kerala+Backwaters" alt="Kerala Backwaters" class="w-full h-40 object-cover group-hover:scale-[1.05] transition duration-500">
+                        <span class="absolute top-3 right-3 bg-trav-gold text-trav-dark-blue text-xs font-bold px-3 py-1 rounded-full shadow-md">6 Days Domestic</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-trav-dark-blue mb-1 truncate">Kerala: Backwaters & Spices</h3>
+                        <p class="text-gray-600 text-xs mb-3">Houseboat stays and spice plantation tours.</p>
+                        <div class="flex justify-between items-center pt-2 border-t">
+                            <span class="text-xl font-black text-trav-gold">₹85,000</span>
+                            <button onclick="startBooking('Kerala: Backwaters & Spices', 85000)" class="bg-trav-dark-blue text-white font-bold px-4 py-2 rounded-lg text-sm hover:bg-trav-gold hover:text-trav-dark-blue transition duration-300 shadow-md">
+                                Inquire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-trav-dark-blue text-white mt-16 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-3xl font-black tracking-wider text-trav-gold mb-3">TRAVELLENCE</div>
+            <p class="text-sm text-gray-400 mb-4">Curating customized itineraries, offering dedicated concierge support.</p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <a href="#" class="hover:text-trav-gold transition">Privacy Policy</a>
+                <span class="text-gray-500">|</span>
+                <a href="#" class="hover:text-trav-gold transition">Terms of Service</a>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">&copy; 2025 Travellence. All rights reserved. Prices in Indian Rupees (₹).</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 overflow-y-auto" onclick="if(event.target.id === 'booking-modal') hideModal()">
+        <div class="relative bg-white w-full max-w-xl mx-auto my-12 rounded-xl shadow-2xl overflow-hidden transform transition-all">
+            <div class="p-6 bg-trav-dark-blue text-white flex justify-between items-center">
+                <h3 id="modal-title" class="text-2xl font-bold text-trav-gold">Book Your Trip</h3>
+                <button onclick="hideModal()" class="text-white hover:text-trav-gold text-3xl font-light">&times;</button>
+            </div>
+            <div id="modal-content" class="p-6"></div>
+            <div class="p-6 border-t border-gray-200 flex justify-between">
+                <button id="prev-button" onclick="prevStep()" class="bg-gray-400 text-white font-bold py-2 px-4 rounded-lg hidden hover:bg-gray-500 transition duration-200">
+                    &larr; Previous
+                </button>
+                <button id="next-button" onclick="nextStep()" class="bg-trav-gold text-trav-dark-blue font-bold py-2 px-6 rounded-lg ml-auto hover:bg-trav-gold-dark transition duration-200">
+                    Next Step &rarr;
+                </button>
+                <button id="finish-button" onclick="handlePayment()" class="bg-green-600 text-white font-bold py-2 px-6 rounded-lg ml-auto hidden hover:bg-green-700 transition duration-200">
+                    Confirm & Pay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+        let currentSearchType = 'Package';
+        let bookingData = {
+            tripName: "Custom Trip Inquiry",
+            pricePerPerson: 0,
+            travelers: 2,
+            name: '',
+            email: '',
+            phone: '',
+            origin: '',
+            destination: ''
+        };
+        
+        let dropdownState = {
+            'search-travelers': { adults: 2, children: 0 },
+            'search-rooms-guests': { rooms: 1, adults: 2, children: 0 }
+        };
+
+        const modal = document.getElementById('booking-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const finishButton = document.getElementById('finish-button');
+        const searchFieldsContainer = document.getElementById('search-fields-container');
+
+        function generateDropdownDisplayText(values) {
+            let parts = [];
+            if (values.adults !== undefined) {
+                parts.push(`${values.adults} Adult${values.adults !== 1 ? 's' : ''}`);
+                if (values.children > 0) {
+                    parts.push(`${values.children} Child${values.children !== 1 ? 'ren' : ''}`);
+                }
+            }
+            if (values.rooms !== undefined) {
+                const totalGuests = (values.adults || 0) + (values.children || 0);
+                parts.push(`${values.rooms} Room${values.rooms !== 1 ? 's' : ''}`);
+                parts.push(`${totalGuests} Guest${totalGuests !== 1 ? 's' : ''}`);
+            }
+            return parts.length === 0 ? "Select Travelers" : parts.join(', ');
+        }
+
+        function toggleDropdown(id) {
+            const panel = document.getElementById(`${id}-panel`);
+            if (panel) panel.classList.toggle('hidden');
+        }
+
+        function updateDropdownDisplay(id) {
+            const values = dropdownState[id];
+            const displayInput = document.getElementById(`${id}-display`);
+            if (displayInput) displayInput.value = generateDropdownDisplayText(values);
+        }
+
+        function updateCount(id, category, delta, event) {
+            event.stopPropagation();
+            const currentCount = dropdownState[id][category];
+            let newCount = currentCount + delta;
+            if (category === 'rooms' || category === 'adults') {
+                newCount = Math.max(1, newCount);
+            } else {
+                newCount = Math.max(0, newCount);
+            }
+            if (newCount !== currentCount) {
+                dropdownState[id][category] = newCount;
+                document.getElementById(`${id}-${category}-count`).textContent = newCount;
+                updateDropdownDisplay(id);
+            }
+        }
+
+        const searchFields = {
+            inputField: (id, label, placeholder, type = 'text', value = '') => `
+                <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 focus-within:border-trav-gold transition duration-150">
+                    <label class="block text-xs font-semibold text-gray-500">${label}</label>
+                    <input type="${type}" id="${id}" placeholder="${placeholder}" value="${value}" 
+                           class="w-full bg-transparent text-gray-800 focus:outline-none placeholder-gray-400 text-base">
+                </div>
+            `,
+            customDropdownField: (id, label, defaultValues, categories) => {
+                const initialDisplay = generateDropdownDisplayText(defaultValues);
+                let content = '';
+                categories.forEach(cat => {
+                    const key = cat.toLowerCase().replace(/ /g, '');
+                    const currentValue = defaultValues[key] !== undefined ? defaultValues[key] : 0;
+                    content += `
+                        <div class="flex justify-between items-center py-2 border-b last:border-b-0 last:pb-0">
+                            <span class="text-gray-700 font-medium">${cat}</span>
+                            <div class="flex items-center space-x-3">
+                                <button type="button" onclick="updateCount('${id}', '${key}', -1, event)" class="w-8 h-8 rounded-full bg-gray-200 text-trav-dark-blue font-bold hover:bg-gray-300 transition focus:outline-none focus:ring-2 focus:ring-trav-gold">-</button>
+                                <span id="${id}-${key}-count" class="w-6 text-center text-lg font-semibold text-trav-dark-blue">${currentValue}</span>
+                                <button type="button" onclick="updateCount('${id}', '${key}', 1, event)" class="w-8 h-8 rounded-full bg-trav-gold text-white font-bold hover:bg-trav-gold-dark transition focus:outline-none focus:ring-2 focus:ring-trav-dark-blue">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                return `
+                    <div class="relative">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 focus-within:border-trav-gold transition duration-150 cursor-pointer" onclick="toggleDropdown('${id}')">
+                            <label class="block text-xs font-semibold text-gray-500 pointer-events-none">${label}</label>
+                            <input type="text" id="${id}-display" value="${initialDisplay}" readonly
+                                   class="w-full bg-transparent text-gray-800 focus:outline-none placeholder-gray-400 text-base cursor-pointer">
+                        </div>
+                        <div id="${id}-panel" class="absolute z-10 w-64 md:w-80 bg-white p-4 rounded-xl shadow-2xl border border-gray-100 top-full mt-2 right-0 md:right-auto md:left-0 hidden" onclick="event.stopPropagation()">
+                            ${content}
+                            <div class="text-right pt-3 border-t mt-3 border-gray-100">
+                                <button type="button" onclick="toggleDropdown('${id}')" class="text-sm text-trav-gold hover:text-trav-dark-blue font-medium py-1 px-3 rounded-md hover:bg-gray-100">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            },
+            searchButton: (text) => `
+                <button onclick="triggerSearch()" class="col-span-1 md:col-span-4 bg-trav-gold text-trav-dark-blue font-extrabold rounded-xl hover:opacity-95 transition duration-200 transform hover:shadow-lg hover:scale-[1.02] py-3">
+                    <span class="text-lg" id="search-button-text">${text}</span>
+                </button>
+            `
+        };
+
+        function renderPackageSearch() {
+            searchFieldsContainer.innerHTML = `
+                ${searchFields.inputField('search-destination', 'Destination', 'e.g., Kerala or Dubai')}
+                ${searchFields.inputField('search-date', 'Departure Date', '', 'date', '2025-12-01')}
+                ${searchFields.customDropdownField('search-travelers', 'Travelers', dropdownState['search-travelers'], ['Adults', 'Children'])}
+                ${searchFields.searchButton('Search Packages')}
+            `;
+            searchFieldsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-4';
+        }
+
+        function renderFlightSearch() {
+            searchFieldsContainer.innerHTML = `
+                ${searchFields.inputField('search-origin', 'Origin', 'e.g., Delhi or Mumbai')}
+                ${searchFields.inputField('search-destination', 'Destination', 'e.g., London or Bangkok')}
+                ${searchFields.inputField('search-date', 'Departure Date', '', 'date', '2025-12-01')}
+                ${searchFields.customDropdownField('search-travelers', 'Travelers', dropdownState['search-travelers'], ['Adults', 'Children'])}
+                ${searchFields.searchButton('Search Flights')}
+            `;
+            searchFieldsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-4';
+        }
+
+        function renderHotelSearch() {
+            searchFieldsContainer.innerHTML = `
+                ${searchFields.inputField('search-destination', 'Destination', 'e.g., Goa or Paris')}
+                ${searchFields.inputField('search-checkin-date', 'Check-in Date', '', 'date', '2025-12-01')}
+                ${searchFields.customDropdownField('search-rooms-guests', 'Rooms & Guests', dropdownState['search-rooms-guests'], ['Rooms', 'Adults', 'Children'])}
+                ${searchFields.searchButton('Search Hotels')}
+            `;
+            searchFieldsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-4';
+        }
+
+        function changeSearchType(type) {
+            currentSearchType = type;
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                const isSelected = button.dataset.type === type;
+                button.classList.toggle('text-trav-dark-blue', isSelected);
+                button.classList.toggle('font-bold', isSelected);
+                button.classList.toggle('border-b-4', isSelected);
+                button.classList.toggle('border-trav-gold', isSelected);
+                button.classList.toggle('text-gray-500', !isSelected);
+                button.classList.toggle('hover:text-trav-dark-blue', !isSelected);
+            });
+            switch (type) {
+                case 'Package': renderPackageSearch(); break;
+                case 'Flight': renderFlightSearch(); break;
+                case 'Hotel': renderHotelSearch(); break;
+            }
+        }
+
+        function calculateTotalTravelers() {
+            let currentTravelerKey = currentSearchType === 'Hotel' ? 'search-rooms-guests' : 'search-travelers';
+            const currentTravelerState = dropdownState[currentTravelerKey];
+            return currentTravelerState ? (currentTravelerState.adults || 0) + (currentTravelerState.children || 0) : 1;
+        }
+
+        function startBooking(tripName, price) {
+            bookingData.tripName = tripName;
+            bookingData.pricePerPerson = price;
+            bookingData.origin = '';
+            bookingData.destination = '';
+            changeSearchType('Package');
+            bookingData.travelers = calculateTotalTravelers();
+            currentStep = 1;
+            renderStep();
+            modal.classList.remove('hidden');
+        }
+
+        function triggerSearch() {
+            let defaultPrice = 0;
+            let defaultName = "";
+            bookingData.travelers = calculateTotalTravelers();
+            bookingData.origin = '';
+            bookingData.destination = document.getElementById('search-destination')?.value || '';
+            if (currentSearchType === 'Flight') {
+                bookingData.origin = document.getElementById('search-origin')?.value || '';
+            }
+            switch (currentSearchType) {
+                case 'Flight':
+                    defaultPrice = 25000;
+                    defaultName = `Flight from ${bookingData.origin || 'Any Origin'} to ${bookingData.destination || 'Any Destination'}`;
+                    break;
+                case 'Hotel':
+                    defaultPrice = 7000;
+                    defaultName = `Hotel Stay in ${bookingData.destination || 'Any Destination'}`;
+                    break;
+                case 'Package':
+                default:
+                    defaultPrice = 90000;
+                    defaultName = `Trip to ${bookingData.destination || 'Any Destination'}`;
+                    break;
+            }
+            bookingData.tripName = defaultName;
+            bookingData.pricePerPerson = defaultPrice;
+            currentStep = 1;
+            renderStep();
+            modal.classList.remove('hidden');
+        }
+
+        function hideModal() {
+            modal.classList.add('hidden');
+            currentStep = 1;
+        }
+
+        function calculateTotal() {
+            return bookingData.pricePerPerson * bookingData.travelers;
+        }
+
+        function formatINR(number) {
+            if (number === undefined || number === null) return '₹0';
+            const numStr = number.toString().replace(/\B(?=(\d{2})+(?!\d)(?=\d{3}))/g, ",");
+            return `₹${numStr}`;
+        }
+
+        function renderStep() {
+            modalTitle.textContent = `Inquiry: ${bookingData.tripName} (Step ${currentStep}/${totalSteps})`;
+            modalContent.innerHTML = '';
+            prevButton.classList.toggle('hidden', currentStep === 1);
+            nextButton.classList.toggle('hidden', currentStep === totalSteps);
+            finishButton.classList.toggle('hidden', currentStep !== totalSteps);
+            switch (currentStep) {
+                case 1: renderStep1(); break;
+                case 2: renderStep2(); break;
+                case 3: renderStep3(); break;
+                case 4: renderSuccess(); break;
+                default: hideModal();
+            }
+        }
+
+        function renderStep1() {
+            const total = calculateTotal();
+            let itemLabel = '';
+            let priceLabel = '';
+            let travelersLabel = 'Total Travelers (Adults + Children)';
+            let disclaimer = '';
+            let destinationLabel = '';
+            let destinationValue = '';
+            bookingData.travelers = calculateTotalTravelers();
+            if (currentSearchType === 'Package') {
+                itemLabel = 'Selected Trip Package';
+                priceLabel = 'Package Price per Person (Est.)';
+                disclaimer = 'This is an estimated price for the entire package. The final quote will be confirmed by your concierge.';
+                destinationLabel = 'Destination';
+                destinationValue = bookingData.destination || 'Not specified';
+            } else if (currentSearchType === 'Flight') {
+                itemLabel = 'Selected Flight Inquiry';
+                priceLabel = 'Average Flight Price per Person (Est.)';
+                disclaimer = 'This is an estimated price for round-trip flights. Actual pricing depends on carriers and timing.';
+                destinationLabel = 'Travel Route';
+                destinationValue = bookingData.origin && bookingData.destination
+                    ? `${bookingData.origin} to ${bookingData.destination}`
+                    : 'Not specified';
+            } else {
+                itemLabel = 'Selected Hotel Stay Inquiry';
+                priceLabel = 'Average Nightly Stay Price per Guest (Est.)';
+                travelersLabel = 'Total Guests (Adults + Children)';
+                disclaimer = 'This is an estimated price per guest. The final quote will be based on stay duration and room type.';
+                destinationLabel = 'Destination';
+                destinationValue = bookingData.destination || 'Not specified';
+            }
+            const content = `
+                <div class="space-y-4">
+                    <p class="text-sm font-semibold text-gray-500 border-b pb-2 mb-4">Review your ${currentSearchType} selection and details.</p>
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block text-xs font-semibold text-gray-500">${itemLabel}</label>
+                        <span class="text-lg font-bold text-trav-dark-blue">${bookingData.tripName}</span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block text-xs font-semibold text-gray-500">${destinationLabel}</label>
+                        <span class="text-lg font-bold text-trav-dark-blue">${destinationValue}</span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block text-xs font-semibold text-gray-500">${travelersLabel}</label>
+                        <span class="text-lg font-bold text-trav-dark-blue">${bookingData.travelers}</span>
+                        <p class="text-xs text-gray-500 mt-1">To change this, please use the traveler dropdown on the main screen.</p>
+                    </div>
+                    <div class="border-t pt-4 mt-4 bg-yellow-50 bg-opacity-50 p-4 rounded-lg">
+                        <div class="flex justify-between items-center text-gray-600">
+                            <span>${priceLabel}</span>
+                            <span class="font-medium">${formatINR(bookingData.pricePerPerson)}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg font-bold text-trav-dark-blue pt-2">
+                            <span>Estimated Total</span>
+                            <span class="text-trav-gold text-2xl" id="total-price">${formatINR(total)}</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">${disclaimer}</p>
+                    </div>
+                </div>
+            `;
+            modalContent.innerHTML = content;
+        }
+
+        function renderStep2() {
+            const content = `
+                <div class="space-y-4">
+                    <p class="text-sm font-semibold text-gray-500 border-b pb-2 mb-4">Please provide the lead traveler's contact details.</p>
+                    <div>
+                        <label for="traveler-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="traveler-name" value="${bookingData.name}" placeholder="Rohan Sharma" required
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-trav-gold focus:border-trav-gold transition duration-150">
+                    </div>
+                    <div>
+                        <label for="traveler-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="traveler-email" value="${bookingData.email}" placeholder="rohan.sharma@example.com" required
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-trav-gold focus:border-trav-gold transition duration-150">
+                    </div>
+                    <div>
+                        <label for="traveler-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" id="traveler-phone" value="${bookingData.phone}" placeholder="+91 98765 43210" required
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-trav-gold focus:border-trav-gold transition duration-150">
+                    </div>
+                </div>
+            `;
+            modalContent.innerHTML = content;
+        }
+
+        function renderStep3() {
+            const total = calculateTotal();
+            const deposit = Math.max(Math.round(total * 0.1), 3000);
+            const content = `
+                <div class="space-y-6">
+                    <p class="text-xl font-bold text-trav-dark-blue">Confirm and Secure Booking</p>
+                    <p class="text-sm text-gray-600">A small, refundable deposit is required to secure your ${currentSearchType.toLowerCase()} inquiry.</p>
+                    <div class="bg-trav-gold p-4 rounded-lg shadow-md text-center">
+                        <p class="text-xl font-medium text-trav-dark-blue">Initial Deposit:</p>
+                        <p class="text-4xl font-black text-white">${formatINR(deposit)}</p>
+                    </div>
+                    <div>
+                        <label for="payment-method" class="block text-sm font-medium text-gray-700 mb-1">Select Payment Method</label>
+                        <select id="payment-method" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-trav-gold focus:border-trav-gold transition duration-150">
+                            <option>Credit/Debit Card (Visa/Mastercard)</option>
+                            <option>UPI / Net Banking (Simulated)</option>
+                            <option>Digital Wallet (Simulated)</option>
+                        </select>
+                    </div>
+                    <div class="space-y-3">
+                        <label class="block text-sm font-medium text-gray-700">Card Number</label>
+                        <input type="text" placeholder="XXXX XXXX XXXX 4242" value="4242 4242 4242 4242" disabled
+                               class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed">
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Expiry</label>
+                                <input type="text" placeholder="MM/YY" value="12/28" disabled
+                                       class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed">
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700">Name on Card</label>
+                                <input type="text" placeholder="Name" value="${bookingData.name || 'Rohan Sharma'}" disabled
+                                       class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-gray-500">By clicking "Confirm & Pay", you agree to the Travellence terms.</p>
+                </div>
+            `;
+            modalContent.innerHTML = content;
+        }
+
+        function renderSuccess() {
+            const content = `
+                <div class="text-center p-8">
+                    <div class="text-7xl text-green-500 mb-6">🎉</div>
+                    <h3 class="text-3xl font-bold text-trav-dark-blue mb-4">Inquiry Received!</h3>
+                    <p class="text-lg text-gray-600 mb-6">Thank you, ${bookingData.name}. We have received your inquiry for <strong>${bookingData.tripName}</strong>.</p>
+                    <p class="text-sm font-medium text-gray-500">Your concierge will contact you at <strong>${bookingData.phone}</strong> within 4 hours.</p>
+                </div>
+            `;
+            modalContent.innerHTML = content;
+            prevButton.classList.add('hidden');
+            nextButton.classList.add('hidden');
+            finishButton.classList.add('hidden');
+        }
+
+        function nextStep() {
+            if (currentStep === 2) {
+                const name = document.getElementById('traveler-name').value;
+                const email = document.getElementById('traveler-email').value;
+                const phone = document.getElementById('traveler-phone').value;
+                if (!name || !email || !phone) {
+                    const alertBox = document.createElement('div');
+                    alertBox.className = 'absolute top-0 left-0 right-0 p-3 bg-red-500 text-white text-center font-semibold rounded-t-xl transition-opacity duration-300';
+                    alertBox.textContent = "Error: Please fill all required contact details.";
+                    modal.querySelector('.relative').prepend(alertBox);
+                    setTimeout(() => alertBox.remove(), 2500);
+                    return;
+                }
+                bookingData.name = name;
+                bookingData.email = email;
+                bookingData.phone = phone;
+            }
+            if (currentStep < totalSteps) {
+                currentStep++;
+                renderStep();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                renderStep();
+            }
+        }
+
+        function handlePayment() {
+            const originalText = finishButton.textContent;
+            finishButton.textContent = "Processing Payment...";
+            finishButton.disabled = true;
+            setTimeout(() => {
+                finishButton.textContent = originalText;
+                finishButton.disabled = false;
+                currentStep++;
+                renderStep();
+            }, 2000);
+        }
+
+        function scrollToSection(sectionId, event) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: sectionPosition - headerHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        window.onload = () => {
+            changeSearchType('Package');
+        };
+
+        document.addEventListener('click', (event) => {
+            Object.keys(dropdownState).forEach(id => {
+                const panel = document.getElementById(`${id}-panel`);
+                const display = document.getElementById(`${id}-display`);
+                if (panel && !panel.classList.contains('hidden')) {
+                    if (!panel.contains(event.target) && display && !display.contains(event.target)) {
+                        panel.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
