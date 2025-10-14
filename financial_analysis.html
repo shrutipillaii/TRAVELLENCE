@@ -1,206 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Statements - Travellence</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .hero-bg { background: linear-gradient(to right, #1f2937, #111827); }
-        .text-trav-gold { color: #f59e0b; }
-        .bg-trav-gold { background-color: #f59e0b; }
-        .chart-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .chart-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
-        th { background-color: #f9fafb; font-weight: 600; color: #374151; }
-    </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'trav-dark-blue': '#1f2937',
-                        'trav-gold': '#f59e0b',
-                        'trav-light': '#f8fafc',
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Statements - Travellence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+    .hero-bg { background: linear-gradient(to right, #1f2937, #111827); }
+    .text-trav-gold { color: #f59e0b; }
+    .bg-trav-gold { background-color: #f59e0b; }
+    .chart-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .chart-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+    th { background-color: #f9fafb; font-weight: 600; color: #374151; }
+  </style>
 </head>
-<body class="min-h-screen">
-    <!-- Header -->
-    <header class="hero-bg text-white shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="flex justify-between items-center py-5">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">
-                        TL
-                    </div>
-                    <div class="text-2xl font-black tracking-wider text-white">
-                        TRAVELLENCE
-                    </div>
-                </div>
-                <div class="hidden md:flex space-x-8 text-base font-medium">
-                    <a href="index.html" class="hover:text-trav-gold transition duration-200">Home</a>
-                    <a href="index.html#about" class="hover:text-trav-gold transition duration-200">About Us</a>
-                    <a href="index.html#services" class="hover:text-trav-gold transition duration-200">Services</a>
-                    <a href="index.html#packages" class="hover:text-trav-gold transition duration-200">Packages</a>
-                    <a href="#financials" class="text-trav-gold font-semibold">Financial Statements</a>
-                    <a href="competitive_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Competitive Analysis</a>
-                    <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
-                </div>
-                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
-                    &#9776;
-                </button>
-            </nav>
-            <div class="text-center pt-10 pb-16">
-                <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
-                    Financial <span class="text-trav-gold">Statements</span>
-                </h1>
-                <p class="text-xl text-gray-300 font-light">
-                    Year 1 Projection Overview – Travellence
-                </p>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main id="financials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+<body class="min-h-screen">
+  <header class="hero-bg text-white shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex justify-between items-center py-5">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">TL</div>
+          <div class="text-2xl font-black tracking-wider text-white">TRAVELLENCE</div>
+        </div>
+        <div class="hidden md:flex space-x-8 text-base font-medium">
+          <a href="index.html" class="hover:text-trav-gold transition duration-200">Home</a>
+          <a href="index.html#about" class="hover:text-trav-gold transition duration-200">About Us</a>
+          <a href="index.html#services" class="hover:text-trav-gold transition duration-200">Services</a>
+          <a href="index.html#packages" class="hover:text-trav-gold transition duration-200">Packages</a>
+          <a href="#financials" class="text-trav-gold font-semibold">Financial Statements</a>
+          <a href="competitive_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Competitive Analysis</a>
+          <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
+        </div>
+      </nav>
+      <div class="text-center pt-10 pb-16">
+        <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+          Financial <span class="text-trav-gold">Statements</span>
+        </h1>
+        <p class="text-xl text-gray-300 font-light">
+          3-Year Projection Overview – Travellence
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main id="financials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- Profit & Loss Statement -->
+        <section class="chart-card">
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Profit & Loss Statement (₹ in Lakhs)</h2>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Particulars</th>
+                            <th>FY 2023</th>
+                            <th>FY 2024</th>
+                            <th>FY 2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Revenue from Package Sales</td><td>120</td><td>285</td><td>460</td></tr>
+                        <tr><td>Commission Income (Flights & Hotels)</td><td>35</td><td>75</td><td>130</td></tr>
+                        <tr><td>Add-on Services (Insurance, Local Tours)</td><td>12</td><td>28</td><td>62</td></tr>
+                        <tr class="font-semibold border-t"><td>Total Revenue from Operations</td><td>167</td><td>388</td><td>652</td></tr>
+                        <tr><td>Other Income (Ads, Interest)</td><td>2</td><td>3</td><td>5</td></tr>
+                        <tr class="font-semibold border-t"><td>Total Income</td><td>169</td><td>391</td><td>657</td></tr>
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">Expenses:</td></tr>
+                        <tr><td>Cost of Packages (Supplier, Hotels, Transport)</td><td>90</td><td>200</td><td>310</td></tr>
+                        <tr><td>Marketing & Promotion</td><td>15</td><td>30</td><td>45</td></tr>
+                        <tr><td>Employee Salaries</td><td>10</td><td>22</td><td>38</td></tr>
+                        <tr><td>Technology & Maintenance</td><td>6</td><td>9</td><td>12</td></tr>
+                        <tr><td>Office & Admin Expenses</td><td>4</td><td>6</td><td>9</td></tr>
+                        <tr><td>Depreciation</td><td>2</td><td>3</td><td>5</td></tr>
+                        <tr class="font-semibold border-t"><td>Total Expenses</td><td>127</td><td>270</td><td>419</td></tr>
+                        <tr class="font-semibold"><td>Profit Before Tax (PBT)</td><td>42</td><td>121</td><td>238</td></tr>
+                        <tr><td>Less: Tax (30%)</td><td>12.6</td><td>36.3</td><td>71.4</td></tr>
+                        <tr class="font-bold text-trav-dark-blue"><td>Net Profit (PAT)</td><td>29.4</td><td>84.7</td><td>166.6</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- Balance Sheet -->
         <section class="chart-card">
-            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">a) Balance Sheet</h2>
-            <div class="overflow-x-auto">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Assets</th>
-                            <th>Amount (₹)</th>
-                            <th>Liabilities & Equity</th>
-                            <th>Amount (₹)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cash & Bank</td>
-                            <td>2,00,000</td>
-                            <td>Owner’s Equity</td>
-                            <td>3,00,000</td>
-                        </tr>
-                        <tr>
-                            <td>Equipment & Software</td>
-                            <td>1,50,000</td>
-                            <td>Long-term Loan</td>
-                            <td>1,50,000</td>
-                        </tr>
-                        <tr>
-                            <td>Website & Tech Infrastructure</td>
-                            <td>1,00,000</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="font-semibold">
-                            <td>Total Assets</td>
-                            <td>4,50,000</td>
-                            <td>Total Liabilities + Equity</td>
-                            <td>4,50,000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Profit & Loss -->
-        <section class="chart-card">
-            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">b) Profit & Loss Statement</h2>
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Balance Sheet (as of March 31) – ₹ in Lakhs</h2>
             <div class="overflow-x-auto">
                 <table>
                     <thead>
                         <tr>
                             <th>Particulars</th>
-                            <th>Amount (₹)</th>
+                            <th>FY 2023</th>
+                            <th>FY 2024</th>
+                            <th>FY 2025</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Revenue</td><td>8,00,000</td></tr>
-                        <tr><td>Cost of Services</td><td>4,00,000</td></tr>
-                        <tr><td>Gross Profit</td><td>4,00,000</td></tr>
-                        <tr><td>Operating Expenses</td><td>2,00,000</td></tr>
-                        <tr><td>Marketing & Branding</td><td>50,000</td></tr>
-                        <tr class="font-semibold"><td>Net Profit Before Tax</td><td>1,50,000</td></tr>
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">ASSETS</td></tr>
+                        <tr><td>Fixed Assets (Tech, Office, Servers)</td><td>12</td><td>18</td><td>24</td></tr>
+                        <tr><td>Intangible Assets (Brand, Website, App)</td><td>10</td><td>14</td><td>20</td></tr>
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">Current Assets</td></tr>
+                        <tr><td>Cash & Bank</td><td>8</td><td>32</td><td>95</td></tr>
+                        <tr><td>Accounts Receivable</td><td>5</td><td>9</td><td>18</td></tr>
+                        <tr><td>Other Current Assets</td><td>2</td><td>3</td><td>5</td></tr>
+                        <tr class="font-semibold border-t"><td>Total Assets</td><td>37</td><td>76</td><td>162</td></tr>
+
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">LIABILITIES & EQUITY</td></tr>
+                        <tr><td>Share Capital</td><td>25</td><td>25</td><td>25</td></tr>
+                        <tr><td>Retained Earnings</td><td>9</td><td>46</td><td>125</td></tr>
+                        <tr><td>Current Liabilities (Payables, Advance Bookings)</td><td>3</td><td>5</td><td>12</td></tr>
+                        <tr class="font-semibold border-t"><td>Total Liabilities & Equity</td><td>37</td><td>76</td><td>162</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Cash Flow -->
+        <!-- Cash Flow Statement -->
         <section class="chart-card">
-            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">c) Cash Flow Statement</h2>
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Cash Flow Statement (₹ in Lakhs)</h2>
             <div class="overflow-x-auto">
                 <table>
                     <thead>
                         <tr>
-                            <th>Activity</th>
                             <th>Particulars</th>
-                            <th>Amount (₹)</th>
+                            <th>FY 2023</th>
+                            <th>FY 2024</th>
+                            <th>FY 2025</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Operating Activities</td><td>Net Profit + Adjustments</td><td>1,70,000</td></tr>
-                        <tr><td>Investing Activities</td><td>Website & Equipment Investment</td><td>(1,50,000)</td></tr>
-                        <tr><td>Financing Activities</td><td>Owner’s Capital + Loan</td><td>3,50,000</td></tr>
-                        <tr class="font-semibold"><td colspan="2">Net Cash Flow (Closing Cash)</td><td>1,70,000</td></tr>
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">A. Operating Activities</td></tr>
+                        <tr><td>Net Profit Before Tax</td><td>42</td><td>121</td><td>238</td></tr>
+                        <tr><td>Add: Depreciation</td><td>2</td><td>3</td><td>5</td></tr>
+                        <tr><td>Change in Working Capital</td><td>-3</td><td>-6</td><td>-10</td></tr>
+                        <tr class="font-semibold border-t"><td>Net Cash from Operations</td><td>41</td><td>118</td><td>233</td></tr>
+
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">B. Investing Activities</td></tr>
+                        <tr><td>Purchase of Assets (Website, Office, Software)</td><td>-10</td><td>-8</td><td>-12</td></tr>
+                        <tr class="font-semibold border-t"><td>Net Cash from Investing</td><td>-10</td><td>-8</td><td>-12</td></tr>
+
+                        <tr class="bg-gray-50 font-semibold"><td colspan="4">C. Financing Activities</td></tr>
+                        <tr><td>Share Capital Introduced</td><td>25</td><td>—</td><td>—</td></tr>
+                        <tr class="font-semibold border-t"><td>Net Cash from Financing</td><td>25</td><td>—</td><td>—</td></tr>
+
+                        <tr class="font-semibold border-t"><td>Net Increase in Cash</td><td>56</td><td>110</td><td>221</td></tr>
+                        <tr><td>Opening Cash Balance</td><td>0</td><td>8</td><td>32</td></tr>
+                        <tr class="font-bold text-trav-dark-blue"><td>Closing Cash Balance</td><td>8</td><td>32</td><td>95</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Summary -->
+        <!-- Performance Overview -->
         <section class="chart-card">
-            <h2 class="text-2xl font-bold text-trav-dark-blue mb-4">✨ Summary</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                Travellence aims to deliver personalized travel experiences through a lean and tech-driven model. 
-                Year 1 projections indicate financial stability with moderate profitability and low fixed costs.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-                With consistent revenue growth and efficient cash utilization, Travellence is positioned for expansion 
-                into premium domestic and international markets in Year 2.
-            </p>
+            <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Performance Overview (Key Metrics)</h2>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>FY 2023</th>
+                            <th>FY 2024</th>
+                            <th>FY 2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Revenue Growth</td><td>—</td><td>132%</td><td>68%</td></tr>
+                        <tr><td>Net Profit Margin</td><td>17.40%</td><td>21.60%</td><td>25.40%</td></tr>
+                        <tr><td>Return on Equity (ROE)</td><td>35%</td><td>45%</td><td>55%</td></tr>
+                        <tr><td>Debt-to-Equity</td><td>0</td><td>0</td><td>0 (Debt-Free)</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
+  <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+      <p class="text-sm text-gray-500">Financial Projections © 2025 Travellence Strategy Team</p>
+      <button id="downloadPDF" class="mt-4 bg-trav-gold text-trav-dark-blue font-bold px-6 py-2 rounded-lg hover:bg-yellow-500 transition">
+        Download Report
+      </button>
+    </footer>
+  </main>
 
-        <!-- Footer -->
-        <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
-            <p class="text-sm text-gray-500">Financial Projections © 2025 Travellence Strategy Team</p>
-            <button class="mt-4 bg-trav-gold text-trav-dark-blue font-bold px-6 py-2 rounded-lg hover:bg-yellow-500 transition">
-                Download Report
-            </button>
-        </footer>
-
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.chart-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-4px)');
-                card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0)');
-            });
-        });
-    </script>
+  <!-- Script to handle PDF download -->
+  <script>
+    document.getElementById('downloadPDF').addEventListener('click', function () {
+      const element = document.getElementById('financials');
+      const opt = {
+        margin: 0.3,
+        filename: 'Travellence_Financials.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
 </body>
 </html>
