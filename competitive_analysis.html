@@ -31,6 +31,23 @@
             background-color: #f8fafc;
             font-weight: 600;
         }
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        #hamburger-btn {
+            z-index: 60;
+        }
+        #hamburger-btn.open::before {
+            content: '\u2715';
+            font-size: 1.5rem;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -59,6 +76,7 @@
                         TRAVELLENCE
                     </div>
                 </div>
+                <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex space-x-8 text-base font-medium">
                     <a href="index.html" class="hover:text-trav-gold transition duration-200">Home</a>
                     <a href="index.html#about" class="hover:text-trav-gold transition duration-200">About Us</a>
@@ -68,80 +86,114 @@
                     <a href="#analysis" class="text-trav-gold font-semibold">Competitive Analysis</a>
                     <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
                 </div>
-                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                <!-- Hamburger Button -->
+                <button id="hamburger-btn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition" aria-label="Toggle navigation menu" aria-expanded="false">
                     &#9776;
                 </button>
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-trav-dark-blue text-white flex flex-col items-center space-y-4 py-6 z-50">
+                    <a href="index.html" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Home</a>
+                    <a href="index.html#about" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">About Us</a>
+                    <a href="index.html#services" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Services</a>
+                    <a href="index.html#packages" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="financial_analysis.html" target="_blank" class="text-base font-medium hover:text-trav-gold transition duration-200">Financial Analysis</a>
+                    <a href="#analysis" onclick="scrollToSection('analysis', event); toggleMobileMenu();" class="text-base font-medium text-trav-gold font-semibold">Competitive Analysis</a>
+                    <a href="#" class="text-base font-medium hover:text-trav-gold transition duration-200">Contact</a>
+                </div>
             </nav>
             <div class="text-center pt-10 pb-16">
                 <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
                     Strategic Competitive  <span class="text-trav-gold">Landscape</span>
                 </h1>
                 <p class="text-xl text-gray-300 font-light">
-                   
+                    Understand how Travellence stands out in the travel industry
                 </p>
             </div>
         </div>
     </header>
-
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section id="analysis" class="mb-16">
             <div class="chart-card">
                 <h3 class="text-lg font-bold text-trav-dark-blue mb-4">Market Competitor Overview</h3>
                 <div class="overflow-x-auto">
-                   <table class="w-full comparison-table">
-    <thead>
-        <tr>
-            <th class="px-4 py-3 text-left">Feature / Aspect</th>
-            <th class="px-4 py-3 text-center">MakeMyTrip</th>
-            <th class="px-4 py-3 text-center">SOTC Travel</th>
-            <th class="px-4 py-3 text-center">Travellence ✨</th>
-        </tr>
-    </thead>
-    <tbody class="divide-y divide-gray-200">
-        <tr>
-            <td class="px-4 py-3">Core Offering</td>
-            <td class="px-4 py-3 text-center">Flight & hotel bookings, packages</td>
-            <td class="px-4 py-3 text-center">Group tours, travel packages</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Personalized end-to-end trip planning</td>
-        </tr>
-        <tr>
-            <td class="px-4 py-3">Customization Level</td>
-            <td class="px-4 py-3 text-center">Low – fixed packages</td>
-            <td class="px-4 py-3 text-center">Medium – curated tours</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">High – fully tailor-made</td>
-        </tr>
-        <tr>
-            <td class="px-4 py-3">Pricing</td>
-            <td class="px-4 py-3 text-center">Seasonal offers, standard rates</td>
-            <td class="px-4 py-3 text-center">Premium & mid-range</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable & flexible</td>
-        </tr>
-        <tr>
-            <td class="px-4 py-3">Customer Experience</td>
-            <td class="px-4 py-3 text-center">Transaction-based</td>
-            <td class="px-4 py-3 text-center">Guided tours</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Smooth, elegant, stress-free</td>
-        </tr>
-        <tr>
-            <td class="px-4 py-3">Support</td>
-            <td class="px-4 py-3 text-center">Call center, chat</td>
-            <td class="px-4 py-3 text-center">Dedicated travel agent</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">24/7 concierge assistance</td>
-        </tr>
-        <tr>
-            <td class="px-4 py-3">Unique Value</td>
-            <td class="px-4 py-3 text-center">Large reach</td>
-            <td class="px-4 py-3 text-center">Established brand</td>
-            <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable personalization & experience focus</td>
-        </tr>
-    </tbody>
-</table>
+                    <table class="w-full comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-left">Feature / Aspect</th>
+                                <th class="px-4 py-3 text-center">MakeMyTrip</th>
+                                <th class="px-4 py-3 text-center">SOTC Travel</th>
+                                <th class="px-4 py-3 text-center">Travellence ✨</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-3">Core Offering</td>
+                                <td class="px-4 py-3 text-center">Flight & hotel bookings, packages</td>
+                                <td class="px-4 py-3 text-center">Group tours, travel packages</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">Personalized end-to-end trip planning</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Customization Level</td>
+                                <td class="px-4 py-3 text-center">Low – fixed packages</td>
+                                <td class="px-4 py-3 text-center">Medium – curated tours</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">High – fully tailor-made</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Pricing</td>
+                                <td class="px-4 py-3 text-center">Seasonal offers, standard rates</td>
+                                <td class="px-4 py-3 text-center">Premium & mid-range</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable & flexible</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Customer Experience</td>
+                                <td class="px-4 py-3 text-center">Transaction-based</td>
+                                <td class="px-4 py-3 text-center">Guided tours</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">Smooth, elegant, stress-free</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Support</td>
+                                <td class="px-4 py-3 text-center">Call center, chat</td>
+                                <td class="px-4 py-3 text-center">Dedicated travel agent</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">24/7 concierge assistance</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Unique Value</td>
+                                <td class="px-4 py-3 text-center">Large reach</td>
+                                <td class="px-4 py-3 text-center">Established brand</td>
+                                <td class="px-4 py-3 text-center text-trav-gold font-semibold">Affordable personalization & experience focus</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     </main>
-
     <script>
-        // Simple interactivity
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
+            hamburgerBtn.classList.toggle('open');
+            hamburgerBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+        }
+
+        function scrollToSection(sectionId, event) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: sectionPosition - headerHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.getElementById('hamburger-btn').addEventListener('click', toggleMobileMenu);
+
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.chart-card');
             cards.forEach(card => {
@@ -151,6 +203,17 @@
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
                 });
+            });
+
+            document.addEventListener('click', (event) => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const hamburgerBtn = document.getElementById('hamburger-btn');
+                if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('open');
+                    hamburgerBtn.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', false);
+                }
             });
         });
     </script>

@@ -6,6 +6,8 @@
     <title>Travellence: Excellence in Every Journey</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Import Inter font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -43,6 +45,24 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
             transform: translateY(-5px);
         }
+
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        #hamburger-btn {
+            z-index: 60;
+        }
+        #hamburger-btn.open::before {
+            content: '\u2715';
+            font-size: 1.5rem;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -59,7 +79,6 @@
     </script>
 </head>
 <body class="min-h-screen">
-
     <!-- Header & Hero Section -->
     <header class="hero-bg text-white shadow-xl pb-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +92,7 @@
                         TRAVELLENCE
                     </div>
                 </div>
-               <!-- Navigation Links -->
+                <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex space-x-8 text-base font-medium">
                     <a href="#about" onclick="scrollToSection('about', event)" class="hover:text-trav-gold transition duration-200">About Us</a>
                     <a href="#services" onclick="scrollToSection('services', event)" class="hover:text-trav-gold transition duration-200">Services</a>
@@ -82,11 +101,20 @@
                     <a href="competitive_analysis.html" target="_blank" class="hover:text-trav-gold transition duration-200">Competitive Analysis</a>
                     <a href="#" class="hover:text-trav-gold transition duration-200">Contact</a>
                 </div>
-                <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+                <!-- Hamburger Button -->
+                <button id="hamburger-btn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition" aria-label="Toggle navigation menu" aria-expanded="false">
                     &#9776;
                 </button>
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-trav-dark-blue text-white flex flex-col items-center space-y-4 py-6 z-50">
+                    <a href="#about" onclick="scrollToSection('about', event); toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">About Us</a>
+                    <a href="#services" onclick="scrollToSection('services', event); toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Services</a>
+                    <a href="#packages" onclick="scrollToSection('packages', event); toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Packages</a>
+                    <a href="financial_analysis.html" target="_blank" class="text-base font-medium hover:text-trav-gold transition duration-200">Financial Analysis</a>
+                    <a href="competitive_analysis.html" target="_blank" class="text-base font-medium hover:text-trav-gold transition duration-200">Competitive Analysis</a>
+                    <a href="#" class="text-base font-medium hover:text-trav-gold transition duration-200">Contact</a>
+                </div>
             </nav>
-
             <!-- Tagline and Search Form -->
             <div class="text-center pt-10 pb-16">
                 <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
@@ -96,7 +124,6 @@
                     Curated experiences and dedicated concierge services for the discerning global traveler.
                 </p>
             </div>
-
             <!-- Booking Search Bar -->
             <div class="bg-white p-5 sm:p-8 rounded-2xl search-card-float -mb-32 relative">
                 <div class="flex flex-wrap gap-3 mb-6 border-b border-gray-100 pb-3" id="search-tabs">
@@ -115,7 +142,6 @@
             </div>
         </div>
     </header>
-
     <!-- Main Content -->
     <main class="max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-40">
         <!-- About Us -->
@@ -150,42 +176,37 @@
                 </div>
             </div>
         </section>
-
-      <!-- Add this inside the <head> tag of travellence.html if not already present -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- Updated Services Section -->
-<section id="services" class="mb-20">
-    <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Our Excellence Guarantee</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <div class="service-card bg-white">
-            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-plane"></i></div>
-            <h4 class="font-extrabold text-trav-dark-blue mb-2">Custom Trip Planning</h4>
-            <p class="text-sm text-gray-500">Personalized itineraries based on your preferences and budget.</p>
-        </div>
-        <div class="service-card bg-white">
-            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-hotel"></i></div>
-            <h4 class="font-extrabold text-trav-dark-blue mb-2">Travel Concierge</h4>
-            <p class="text-sm text-gray-500">Flight, hotel, visa, and activity bookings handled end-to-end.</p>
-        </div>
-        <div class="service-card bg-white">
-            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-phone"></i></div>
-            <h4 class="font-extrabold text-trav-dark-blue mb-2">24/7 Trip Assistance</h4>
-            <p class="text-sm text-gray-500">Real-time support during your travels, anytime, anywhere.</p>
-        </div>
-        <div class="service-card bg-white">
-            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-gift"></i></div>
-            <h4 class="font-extrabold text-trav-dark-blue mb-2">Experience Packages</h4>
-            <p class="text-sm text-gray-500">Honeymoon, solo, family, or corporate trips crafted with care.</p>
-        </div>
-        <div class="service-card bg-white">
-            <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-leaf"></i></div>
-            <h4 class="font-extrabold text-trav-dark-blue mb-2">Sustainable Travel</h4>
-            <p class="text-sm text-gray-500">Eco-friendly stays and responsible tourism choices.</p>
-        </div>
-    </div>
-</section>
-
+        <!-- Services Section -->
+        <section id="services" class="mb-20">
+            <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Our Excellence Guarantee</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-plane"></i></div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Custom Trip Planning</h4>
+                    <p class="text-sm text-gray-500">Personalized itineraries based on your preferences and budget.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-hotel"></i></div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Travel Concierge</h4>
+                    <p class="text-sm text-gray-500">Flight, hotel, visa, and activity bookings handled end-to-end.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-phone"></i></div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">24/7 Trip Assistance</h4>
+                    <p class="text-sm text-gray-500">Real-time support during your travels, anytime, anywhere.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-gift"></i></div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Experience Packages</h4>
+                    <p class="text-sm text-gray-500">Honeymoon, solo, family, or corporate trips crafted with care.</p>
+                </div>
+                <div class="service-card bg-white">
+                    <div class="text-5xl mb-4 text-trav-gold"><i class="fas fa-leaf"></i></div>
+                    <h4 class="font-extrabold text-trav-dark-blue mb-2">Sustainable Travel</h4>
+                    <p class="text-sm text-gray-500">Eco-friendly stays and responsible tourism choices.</p>
+                </div>
+            </div>
+        </section>
         <!-- Featured Packages Section -->
         <section id="packages" class="mb-20">
             <h2 class="text-3xl font-bold text-trav-dark-blue mb-10 text-center">Featured Packages</h2>
@@ -346,7 +367,6 @@
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <footer class="bg-trav-dark-blue text-white mt-16 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -360,7 +380,6 @@
             <p class="text-xs text-gray-500 mt-4">&copy; 2025 Travellence. All rights reserved. Prices in Indian Rupees (₹).</p>
         </div>
     </footer>
-
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 overflow-y-auto" onclick="if(event.target.id === 'booking-modal') hideModal()">
         <div class="relative bg-white w-full max-w-xl mx-auto my-12 rounded-xl shadow-2xl overflow-hidden transform transition-all">
@@ -382,7 +401,6 @@
             </div>
         </div>
     </div>
-
     <script>
         let currentStep = 1;
         const totalSteps = 3;
@@ -410,6 +428,17 @@
         const nextButton = document.getElementById('next-button');
         const finishButton = document.getElementById('finish-button');
         const searchFieldsContainer = document.getElementById('search-fields-container');
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
+            hamburgerBtn.classList.toggle('open');
+            hamburgerBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+        }
+
+        document.getElementById('hamburger-btn').addEventListener('click', toggleMobileMenu);
 
         function generateDropdownDisplayText(values) {
             let parts = [];
@@ -835,6 +864,14 @@
         };
 
         document.addEventListener('click', (event) => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('open');
+                hamburgerBtn.classList.remove('open');
+                hamburgerBtn.setAttribute('aria-expanded', false);
+            }
             Object.keys(dropdownState).forEach(id => {
                 const panel = document.getElementById(`${id}-panel`);
                 const display = document.getElementById(`${id}-display`);
