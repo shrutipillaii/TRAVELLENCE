@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research on Competitors - Travellence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+    .hero-bg { background: linear-gradient(to right, #1f2937, #111827); }
+    .text-trav-gold { color: #f59e0b; }
+    .bg-trav-gold { background-color: #f59e0b; }
+    /* --- FIX 1: Active Nav Link Styling --- */
+    .nav-link { 
+      color: white; /* Default color for all links in header */
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover {
+      color: #f59e0b; /* Hover color for all links */
+    }
+    .nav-link.active {
+      color: #f59e0b; /* Yellow color for the active page link */
+      font-weight: 600; /* font-semibold */
+    }
+    /* ------------------------------------- */
+
+    .chart-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .chart-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    /* --- FIX 2: Video Styling for <video> tag --- */
+    .video-container video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      border-radius: 0.5rem;
+    }
+    /* ------------------------------------------- */
+
+    /* Specific styling for profile pictures */
+    .profile-img-container {
+      width: 120px; 
+      height: 120px; 
+      overflow: hidden;
+      border-radius: 50%; 
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .profile-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* General image styling for screenshots */
+    .screenshot-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    #hamburger-btn {
+      z-index: 60;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'trav-dark-blue': '#1f2937',
+            'trav-gold': '#f59e0b',
+            'trav-light': '#f8fafc',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen">
+  <header class="hero-bg text-white shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex justify-between items-center py-5">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-trav-gold flex items-center justify-center font-extrabold text-trav-dark-blue text-lg shadow-md">TL</div>
+          <div class="text-2xl font-black tracking-wider text-white">TRAVELLENCE</div>
+        </div>
+        <div class="hidden md:flex space-x-8 text-base font-medium">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#about" class="nav-link">About Us</a>
+          <a href="index.html#services" class="nav-link">Services</a>
+          <a href="index.html#packages" class="nav-link">Packages</a>
+          <a href="financials.html" class="nav-link">Financial Statements</a>
+          <a href="competitive_analysis.html" target="_blank" class="nav-link">Competitive Analysis</a>
+          <a href="research.html" class="nav-link active">Research On Competitors</a>
+        </div>
+
+        <button id="hamburger-btn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-white hover:bg-opacity-10 transition">
+          &#9776;
+        </button>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-trav-dark-blue text-white flex flex-col items-center space-y-4 py-6 z-50">
+          <a href="index.html" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Home</a>
+          <a href="index.html#about" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">About Us</a>
+          <a href="index.html#services" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Services</a>
+          <a href="index.html#packages" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Packages</a>
+          <a href="financials.html" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Financial Statements</a>
+          <a href="competitive_analysis.html" target="_blank" onclick="toggleMobileMenu();" class="text-base font-medium hover:text-trav-gold transition duration-200">Competitive Analysis</a>
+          <a href="research.html" onclick="toggleMobileMenu();" class="text-base font-medium text-trav-gold font-semibold">Research on competitors</a>
+        </div>
+      </nav>
+
+      <div class="text-center pt-10 pb-16">
+        <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+          Research on <span class="text-trav-gold">Competitors</span>
+        </h1>
+        <p class="text-xl text-gray-300 font-light">
+          Insights from Primary and Secondary Data
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <section class="chart-card">
+      <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Primary Data</h2>
+      <p class="text-gray-600 mb-8">Video reviews from customers of our competitors.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 video-container">
+        <div class="chart-card">
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-4">GT Holidays Review</h3>
+          <video src="./assets/mmt.mp4" controls></video>
+        </div>
+
+        <div class="chart-card">
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-4">SOTC Review</h3>
+          <video src="./assets/mmt2.mp4" controls></video>
+        </div>
+
+        <div class="chart-card">
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-4">Thomas Cook Review</h3>
+          <video src="./assets/mmt3.mp4" controls></video>
+        </div>
+      </div>
+      <p class="text-gray-600 mb-8">Customer Reviews</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"> <div class="chart-card flex flex-col items-center"> <div class="profile-img-container">
+
+            <img src="./assets/pfp-new.jpg" alt="Prajwal Shevante">
+          </div>
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-2">Prajwal Shevante (GT Holidays Customer)</h3>
+          <p class="text-gray-600">“I travelled with GT Holidays last year and honestly, they handled everything really well  from flights to hotel bookings and sightseeing. I liked how organized and stress-free the whole trip felt. Their staff kept checking in to make sure things were fine, which was nice. But I did feel the trip was a bit expensive for what was offered. Also, the itinerary was too fixed  I wanted to explore on my own, but there wasn’t much flexibility. Overall, they’re great for people who want everything planned out, but not ideal if you like customizing your trips.”</p>
+        </div>
+
+        <div class="chart-card flex flex-col items-center">
+          <div class="profile-img-container">
+            <img src="./assets/riya.jpg" alt="Riya Paul">
+          </div>
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-2">Riya Paul (SOTC Customer)</h3>
+          <p class="text-gray-600">"I booked my Europe trip with SOTC, and they’re definitely reliable. The hotels and guides were really good, and the whole group tour was smooth. I liked how everything was managed without me having to stress about details. But the only issue was that it felt too structured I couldn’t change or add anything to my itinerary once it was confirmed. Even getting quick help for small changes took time. So while it’s good for families and first-time travelers, it’s not very flexible for someone who likes more freedom during travel."</p>
+        </div>
+
+        <div class="chart-card flex flex-col items-center">
+          <div class="profile-img-container">
+            <img src="./assets/tanmay.jpg" alt="Tanmay Dhole">
+          </div>
+          <h3 class="text-lg font-semibold text-trav-dark-blue mb-2">Tanmay Dhole (Thomas Cook Customer)</h3>
+          <p class="text-gray-600">“I’ve booked with Thomas Cook a couple of times, and what I really like is their professionalism. You feel safe and taken care of, especially when traveling abroad. Their payment options are convenient too. But honestly, it feels a bit too commercial  like they’re more focused on selling packages than understanding what you personally want. Communication between their teams could also be smoother. I’d still say they’re reliable, just not very personal or flexible.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chart-card">
+  <h2 class="text-2xl font-bold text-trav-dark-blue mb-6">Secondary Data</h2>
+  <p class="text-gray-600 mb-8">Analysis of competitor companies based on available data.</p>
+
+  <div class="mb-12">
+    <h3 class="text-xl font-semibold text-trav-dark-blue mb-4">1. MakeMyTrip (MMT)</h3>
+    <p class="text-gray-600 mb-3">
+      • Numerous customers report major issues with customer service, refund processing, and misleading bookings.
+    </p>
+    <p class="text-gray-600 italic mb-4 border-l-4 border-trav-gold pl-3">
+      User on Reddit: “Makemytrip didn’t book tickets and left me to book tickets at higher prices.”
+    </p>
+    <p class="font-medium text-red-600 mb-2">Key issues: Lack of trust, poor support, booking failures.</p>
+    <p class="font-medium text-green-600 mb-6">Opportunity for Travellence: Emphasize transparent pricing, reliable bookings, and strong human support.</p>
+    
+    <img src="./assets/image1.png" alt="MakeMyTrip Secondary Data Screenshot 1" class="screenshot-img">
+    <img src="./assets/image2.png" alt="MakeMyTrip Secondary Data Screenshot 2" class="screenshot-img">
+    <img src="./assets/image3.png" alt="MakeMyTrip Secondary Data Screenshot 3" class="screenshot-img">
+  </div>
+
+  <div class="mb-12">
+    <h3 class="text-xl font-semibold text-trav-dark-blue mb-4">2. SOTC Travels</h3>
+    <p class="text-gray-600 mb-3">
+      • Customer complaint on TripAdvisor: “SOTC is not good at all. Once you pay money in advance they do not plan and provide good service. All they want is customer money.”
+    </p>
+    <p class="text-gray-600 italic mb-4 border-l-4 border-trav-gold pl-3">
+      • Another Reddit post: “SOTC revoked an agreed tour, changed the price of a revised tour, charged additional processing fees, then refused to return an advance of 76k.”
+    </p>
+    <p class="font-medium text-red-600 mb-2">Key issues: Rigid packages, lack of transparency, refund and modification problems.</p>
+    <p class="font-medium text-green-600 mb-6">Opportunity for Travellence: Highlight flexibility, customization, and clear terms.</p>
+    
+    <img src="./assets/image4.png" alt="SOTC Secondary Data Screenshot" class="screenshot-img">
+  </div>
+
+  <div>
+    <h3 class="text-xl font-semibold text-trav-dark-blue mb-4">3. GT Holidays</h3>
+    <p class="text-gray-600 mb-3">
+      • JustDial review: “We got very worst experience in triangle trip. Most of the people got vomiting and dysentery. We were not satisfied by GT travel.”
+    </p>
+    <p class="text-gray-600 italic mb-4 border-l-4 border-trav-gold pl-3">
+      • TripAdvisor review: “Booked GT holidays for 4 nights/5 days Golden Triangle tour … Complete mess starting from day 1 and I will never go again.”
+    </p>
+    <p class="font-medium text-red-600 mb-2">Key issues: Poor on-ground execution, health/safety concerns, poor service organization.</p>
+    <p class="font-medium text-green-600 mb-6">Opportunity for Travellence: Emphasize quality control, health & safety oversight, reliable partners.</p>
+    
+    <img src="./assets/image5.png" alt="GT Holidays Secondary Data Screenshot" class="screenshot-img">
+  </div>
+</section>
+    <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+      <p class="text-sm text-gray-500">Research Data © 2025 Travellence Strategy Team</p>
+    </footer>
+  </main>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('open');
+    }
+
+    // Toggle mobile menu visibility
+    document.getElementById('hamburger-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(item => {
+      item.addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.remove('open');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
